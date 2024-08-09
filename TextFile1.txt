@@ -1,0 +1,176 @@
+------------------------------SCHOOL MANAGEMENT SYSTEM DATABASE PROJECT (SQL)--------------------------------
+
+
+Business Rules:
+
+An employee can be one or more teachers
+Each teacher is an employee
+An employee can be a one or more management’s employee
+Each management’s employee is an employee
+A Teacher teaches one or many courses
+Each course is taught by one teacher
+A course contains many student’s grades
+A specific student’s grade is related to a specific course
+A management’s employee set up zero or many events
+Each event is made by one management’s employee
+A teacher can take one or more class’ attendance
+A class’ attendance is taken by each teacher
+
+                               --------------------------ERD------------------------
+                                          Entity-Relationship Diagram (ERD):
+The Diagram is:
+
+The DDL Diagram:
+
+Creating Table and Inserting Data:
+Table Name: Employee
+
+Create Table Query:
+Create Table Employee(Employee_ID INT, Employee_Salary INT, Employee_Position varchar(20), Employee_Hiring_Date DATE);
+Insert Table Query:
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(1, 10000, 'Director', '2020-01-01');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(2, 9000, 'Head of the dept', '2020-01-02');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(3, 8000, 'principal', '2020-01-03');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(4, 7000, 'classteacher', '2020-01-04');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(5, 6000, 'classmonitor', '2020-01-05');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(6, 5000, 'sports trainer', '2020-01-06');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(7, 4000, 'clerk', '2020-01-07');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(8, 3000, 'Attender', '2020-01-08');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(9, 2000, 'cleaner', '2020-01-09');
+Insert Into Employee(Employee_ID, Employee_Salary, Employee_Position, Employee_Hiring_Date) Values(10, 1000, 'Bus Drivers', '2020-01-10');
+Output Query:
+Select * From Employee;
+
+
+Table Name: Management
+
+Create Table Query:
+Create Table Management(Employee_ID INT, Event_ID INT, Mangement_Employee_Email varchar(20), Mangement_Employee_Phone INT, Mangement_Employee_Name Text);
+Insert Table Query:
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (1, 101, 'a@gmail.com', 007, 'peter');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (2, 102, 'b@gmail.com', 010, 'john');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (3, 103, 'c@gmail.com', 045, 'tom');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (4, 104, 'd@gmail.com', 018, 'tim');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (5, 105, 'e@gmail.com', 093, 'allen');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (6, 106, 'f@gmail.com', 017, 'dummy');
+Insert Into Management(Employee_ID, Event_ID, Mangement_Employee_Email, Mangement_Employee_Phone, Mangement_Employee_Name) Values (7, 104, 'g@gmail.com', 001, 'dora');
+Output Query:
+Select * From Management;
+
+
+
+
+Table Name: Event
+
+Create Table Query:
+Create Table Event(Event_ID INT, Number_of_Attendees INT, Event_Name varchar(20));
+Insert Table Query:
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (101, 1, 100, ‘sportsday’);
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (102, 2, 90, ‘farewellday’);
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (103, 3, 80, ‘resultday’);
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (104, 4, 70, ‘dramaday’);
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (105, 5, 60, ‘newyears day’);
+Insert Into Event(Event_ID, Employee_ID, Number_of_Attendees, Event_Name) Values (106, 6, 50, ‘science day’);
+Output Query:
+Select * From Event;
+
+
+Table Name: Class_Attendance
+
+Create Table Query:
+Create Table Class_Attendance(Class_Code INT, Employee_ID INT, Attendee_Student_Name varchar(20), Attendance_Date Date);
+Insert Table Query:
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1501, 1, ‘deepu’, ‘2020–02–01’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1502, 2, ‘mittu’, ‘2020–02–02’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1503, 3, ‘david’, ‘2020–02–03’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1504, 4, ‘steve’, ‘2020–02–04’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1505, 5, ‘smith’, ‘2020–02–05’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1506, 6, ‘rahul’, ‘2020–02–06’);
+Insert Into Class_Attendance(Class_Code, Employee_ID, Attendee_Student_Name, Attendance_Date) Values (1507, 7, ‘dravid’, ‘2020–02–07’);
+Output Query:
+Select * From Class_Attendance
+
+
+
+Table Name: Teacher
+
+Create Table Query:
+Create Table Teacher(Employee_ID INT, Class_Code INT, Course_ID INT, Teacher_Email Text, Teacher_Phone INT, Teacher_Name Text);
+Insert Table Query:
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (1, 1501, 500, ‘ab@gmail.com’, 940, ‘stella’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (2, 1502, 501, ‘ac@gmail.com’, 840, ‘lisa’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (3, 1503, 502, ‘ad@gmail.com’, 740, ‘tina’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (4, 1504, 503, ‘ae@gmail.com’, 640, ‘rina’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (5, 1505, 504, ‘af@gmail.com’, 540, ‘sita’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (6, 1506, 505, ‘ag@gmail.com’, 440, ‘geetha’);
+Insert Into Teacher(Employee_ID, Class_Code, Course_ID, Teacher_Email, Teacher_Phone, Teacher_Name) Values (7, 1507, 506, ‘ah@gmail.com’, 340, ‘saketh’);
+Output Query:
+Select * From Teacher;
+
+
+Table Name: Course
+
+Create Table Query:
+Create Table Course(Course_ID INT, Employee_ID INT, Course_Hours INT, Course_Name Text);
+Insert Table Query:
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (500, 1, 10 , 'english');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (501, 2, 9, 'C-lang');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (502, 3, 8, 'python');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (503, 4, 7, 'sql');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (504, 5, 6, 'maths');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (505, 6, 5, 'science');
+Insert Into Course(Course_ID, Employee_ID, Course_Hours, Course_Name) Values (506, 7, 4, 'labs');
+Output Query:
+Select * From Course;
+
+
+Table Name: Grade
+
+Create Table Query:
+Create Table Grade(Course_code INT, Course_ID INT, Student_Name Text, Student_Grade Char(1), Total_Grade Char(1));
+Insert Table Query:
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (600, 500, ‘deepu’, ‘A’, ‘P’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (601, 501, ‘mittu’, ‘A’, ‘P’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (602, 502, ‘david’, ‘B’, ‘P’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (603, 503, ‘steve’, ‘B’, ‘P’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (604, 504, ‘smith’, ‘C’, ‘F’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (605, 505, ‘rahul’, ‘C’, ‘F’ );
+Insert Into Grade(Course_code, Course_ID, Student_Name, Student_Grade, Total_Grade) Values (606, 506, ‘dravid’, ‘A’, ‘P’ );
+
+-----------------------------------------------------------------------------------------------Read Part
+List all event information that people attendance was above 70?
+SELECT * FROM EVENT WHERE Number_of_Attendees <70;
+
+
+
+2. Select Employee_details along with Management_Name?
+
+-- Using join here 
+SELECT E.Employee_Position, E.Employee_Hiring_Date, M.Mangement_Employee_Name From Employee
+ E Join Management M 
+ON E.Employee_ID = M.Employee_ID;
+
+
+
+3. Select Class Details With Its Teachers Name?
+
+SELECT C.Class_Code, C.Attendance_Date, C.Attendee_Student_Name, 
+T.Teacher_Name From Class_Attendance C JOIN Teacher T
+ ON C.Employee_ID = T.Employee_ID;
+
+
+4. Select Student_Grade_Details with their Course_Name
+
+Select C.Course_Name, G.Student_Name, G.Student_Grade, 
+G.Total_Grade From Course C join Grade G 
+ON C.Course_ID = G.Course_ID;
+
+
+
+5. Present all employees ID who got hired on ‘2020–1–02’?
+
+SELECT Employee_ID FROM Employee WHERE Employee_Hiring_Date=’2020–1–02';
+
+
+--------------------------------------------The project is Done------------------------------
+
